@@ -9,7 +9,9 @@ export interface Book {
   status: BookStatus;
 }
 
-export type BookStatus = 'want-to-read' | 'currently-reading' | 'have-read';
+// Centralized status constants to prevent drift
+export const BOOK_STATUSES = ['want-to-read', 'currently-reading', 'have-read'] as const;
+export type BookStatus = typeof BOOK_STATUSES[number];
 
 // Context-related interfaces
 export interface BookCollectionState {

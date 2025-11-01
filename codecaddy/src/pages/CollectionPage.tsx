@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useBookCollection } from '../contexts/BookCollectionContext';
 import BookCard from '../components/BookCard';
+import Container from '../components/Container';
 import type { Book, BookStatus } from '../shared/types';
 
 const CollectionPage = () => {
@@ -16,7 +17,7 @@ const CollectionPage = () => {
   const filteredBooks = getFilteredBooks();
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <Container>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800">My Collection</h1>
         <Link
@@ -104,7 +105,7 @@ const CollectionPage = () => {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 

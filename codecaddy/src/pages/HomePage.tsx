@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useBookCollection } from '../contexts/BookCollectionContext';
+import Container from '../components/Container';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const HomePage = () => {
     : 0;
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <Container>
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Your Reading Dashboard</h1>
 
       {/* Stats Section */}
@@ -74,7 +75,7 @@ const HomePage = () => {
           <p>Browse and manage your book collection</p>
         </button>
       </div>
-    </div>
+    </Container>
   );
 };
 

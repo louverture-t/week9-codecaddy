@@ -18,10 +18,8 @@ const BookCard = ({ book, isInCollection = false, showStatus = true, compact = f
     updateBookStatus(book.id, e.target.value as BookStatus);
   };
 
-  const handleCollectionToggle = () => {
-    if (isInCollection) {
-      removeBook(book.id);
-    }
+  const handleRemove = () => {
+    removeBook(book.id);
   };
 
   const statusColors = {
@@ -38,7 +36,7 @@ const BookCard = ({ book, isInCollection = false, showStatus = true, compact = f
 
   return (
     <div
-      className={`bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 ${isHovered ? 'shadow-lg' : ''} ${compact ? 'flex' : ''}`}
+      className={`bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 flex flex-col ${isHovered ? 'shadow-lg' : ''} ${compact ? 'flex-row' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -50,7 +48,7 @@ const BookCard = ({ book, isInCollection = false, showStatus = true, compact = f
         />
       </div>
 
-      <div className="p-4 flex flex-col h-full justify-between flex-grow">
+      <div className="p-4 flex flex-col justify-between flex-grow">
         <div>
           <h3 className="font-bold text-lg mb-1 line-clamp-1">{book.title}</h3>
           <p className="text-gray-600 mb-2 text-sm">{book.author}</p>
@@ -136,7 +134,7 @@ const BookCard = ({ book, isInCollection = false, showStatus = true, compact = f
 
             {isInCollection && (
               <button
-                onClick={handleCollectionToggle}
+                onClick={handleRemove}
                 className="px-3 py-1 rounded text-sm font-medium transition-colors duration-200 bg-red-100 text-red-700 hover:bg-red-200"
               >
                 Remove

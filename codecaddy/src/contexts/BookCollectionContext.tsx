@@ -39,8 +39,11 @@ type Action =
 const bookCollectionReducer = (state: BookCollectionState, action: Action): BookCollectionState => {
   switch (action.type) {
     case 'ADD_BOOK': {
-      // Prevent duplicates - remove existing book with same ID if present
-      const updatedBooks = [...state.books.filter(book => book.id !== action.payload.id), action.payload];
+      // Prevent duplicates - update in place if exists, otherwise append
+      const exists = state.books.some(b => b.id === action.payload.id);
+      const updatedBooks = exists
+        ? state.books.map(b => (b.id === action.payload.id ? action.payload : b))
+        : [...state.books, action.payload];
       return {
         ...state,
         books: updatedBooks,

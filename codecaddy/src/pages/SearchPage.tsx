@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useBookCollection } from '../contexts/BookCollectionContext';
 import BookCard from '../components/BookCard';
+import Container from '../components/Container';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
@@ -27,7 +28,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <Container>
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Search Books</h1>
 
       <form onSubmit={handleSearch} className="mb-8">
@@ -71,7 +72,7 @@ const SearchPage = () => {
       {searchResults.length > 0 && (
         <div>
           <h2 className="text-xl font-semibold text-gray-700 mb-4">Search Results</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-6">
             {searchResults.map(book => (
               <BookCard
                 key={book.id}
@@ -83,7 +84,7 @@ const SearchPage = () => {
           </div>
         </div>
       )}
-    </div>
+    </Container>
   );
 };
 

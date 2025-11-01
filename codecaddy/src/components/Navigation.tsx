@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useBookCollection } from '../contexts/BookCollectionContext';
+import HamburgerMenu from './HamburgerMenu';
 
 const Navigation = () => {
   const location = useLocation();
@@ -10,25 +11,25 @@ const Navigation = () => {
   };
 
   return (
-    <header className="bg-blue-600 text-white shadow-lg">
-      <div className="container mx-auto px-4 py-4">
+    <header className="shadow-lg" style={{ backgroundColor: '#f7f9fa' }}>
+      <div className="relative px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo/Brand */}
           <Link
             to="/"
-            className="text-2xl font-bold hover:text-orange-300 transition-colors"
+            className="text-2xl font-bold text-gray-800 hover:text-orange-500 transition-colors"
           >
             📚 CodeCaddy
           </Link>
 
-          {/* Navigation Links */}
-          <nav>
-            <ul className="flex space-x-6">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex flex-1">
+            <ul className="flex justify-around items-center w-full">
               <li>
                 <Link
                   to="/"
-                  className={`hover:text-orange-300 transition-colors font-medium ${
-                    isActive('/') ? 'text-orange-300 font-semibold border-b-2 border-orange-300 pb-1' : ''
+                  className={`hover:text-orange-500 transition-colors font-medium text-gray-700 ${
+                    isActive('/') ? 'text-orange-500 font-semibold border-b-2 border-orange-500 pb-1' : ''
                   }`}
                 >
                   Home
@@ -37,8 +38,8 @@ const Navigation = () => {
               <li>
                 <Link
                   to="/search"
-                  className={`hover:text-orange-300 transition-colors font-medium ${
-                    isActive('/search') ? 'text-orange-300 font-semibold border-b-2 border-orange-300 pb-1' : ''
+                  className={`hover:text-orange-500 transition-colors font-medium text-gray-700 ${
+                    isActive('/search') ? 'text-orange-500 font-semibold border-b-2 border-orange-500 pb-1' : ''
                   }`}
                 >
                   Search
@@ -47,8 +48,8 @@ const Navigation = () => {
               <li>
                 <Link
                   to="/collection"
-                  className={`hover:text-orange-300 transition-colors font-medium flex items-center ${
-                    isActive('/collection') ? 'text-orange-300 font-semibold border-b-2 border-orange-300 pb-1' : ''
+                  className={`hover:text-orange-500 transition-colors font-medium flex items-center text-gray-700 ${
+                    isActive('/collection') ? 'text-orange-500 font-semibold border-b-2 border-orange-500 pb-1' : ''
                   }`}
                 >
                   Collection
@@ -61,6 +62,8 @@ const Navigation = () => {
               </li>
             </ul>
           </nav>
+          {/* Hamburger menu for mobile */}
+          <HamburgerMenu />
         </div>
       </div>
     </header>

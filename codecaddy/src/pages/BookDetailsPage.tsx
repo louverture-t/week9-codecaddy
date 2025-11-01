@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useBookCollection } from '../contexts/BookCollectionContext';
+import Container from '../components/Container';
 import type { Book, BookStatus } from '../shared/types';
 import { getBooksApi } from '../services/mockBooksApi';
 import { mapGoogleBookToBook } from '../utils/bookMappers';
@@ -75,16 +76,16 @@ const BookDetailsPage = () => {
 
   if (isLoading) {
     return (
-      <div className="max-w-4xl mx-auto text-center py-10">
+      <Container className="text-center py-10">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
         <p className="mt-2 text-gray-600">Loading book details...</p>
-      </div>
+      </Container>
     );
   }
 
   if (error) {
     return (
-      <div className="max-w-4xl mx-auto">
+      <Container>
         <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
           {error}
         </div>
@@ -94,13 +95,13 @@ const BookDetailsPage = () => {
         >
           ← Go Back
         </button>
-      </div>
+      </Container>
     );
   }
 
   if (!book) {
     return (
-      <div className="max-w-4xl mx-auto text-center py-10">
+      <Container className="text-center py-10">
         <p className="text-gray-600">Book not found</p>
         <button
           onClick={() => navigate(-1)}
@@ -108,7 +109,7 @@ const BookDetailsPage = () => {
         >
           ← Go Back
         </button>
-      </div>
+      </Container>
     );
   }
 
@@ -119,7 +120,7 @@ const BookDetailsPage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <Container>
       <button
         onClick={() => navigate(-1)}
         className="text-blue-500 hover:text-blue-700 mb-6 inline-flex items-center"
@@ -190,7 +191,7 @@ const BookDetailsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 
