@@ -9,7 +9,7 @@ import BookDetailsPage from './pages/BookDetailsPage';
 function App() {
   return (
     <BookCollectionProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/week9-codecaddy">
         <div className="min-h-screen bg-gray-50">
           <Navigation />
           <main className="px-4 py-8">
